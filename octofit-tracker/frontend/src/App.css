@@ -1,0 +1,121 @@
+:root {
+  --octofit-steel-blue: #4682b4;
+  --octofit-steel-blue-light: #5a9bd4;
+  --octofit-dark-blue: #00008b;
+  --octofit-page-bg: #f0f8ff;
+  --octofit-row-hover: #e0ffff;
+  --octofit-text: #1f3b57;
+
+  /* Re-theme Bootstrap's primary so links, badges and spinners match */
+  --bs-primary: #4682b4;
+  --bs-primary-rgb: 70, 130, 180;
+}
+
+body {
+  background: linear-gradient(180deg, var(--octofit-page-bg) 0%, #dcecf9 100%) fixed;
+  color: var(--octofit-text);
+}
+
+/* Text and links */
+a {
+  color: var(--octofit-steel-blue);
+}
+
+a:hover {
+  color: var(--octofit-dark-blue);
+}
+
+.text-secondary {
+  color: #52718f !important;
+}
+
+/* Navigation */
+.octofit-navbar {
+  background: linear-gradient(90deg, var(--octofit-steel-blue) 0%, #2f6a9c 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
+}
+
+.octofit-logo {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+
+.octofit-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.octofit-navbar .nav-link:hover {
+  color: #fff;
+}
+
+.octofit-navbar .nav-link.active {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Headings */
+.octofit-heading {
+  color: var(--octofit-dark-blue);
+  font-weight: 700;
+}
+
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--octofit-steel-blue);
+  --bs-btn-border-color: var(--octofit-steel-blue);
+  --bs-btn-hover-bg: var(--octofit-steel-blue-light);
+  --bs-btn-hover-border-color: var(--octofit-steel-blue-light);
+  --bs-btn-active-bg: var(--octofit-steel-blue-light);
+  --bs-btn-active-border-color: var(--octofit-steel-blue-light);
+  --bs-btn-disabled-bg: var(--octofit-steel-blue);
+  --bs-btn-disabled-border-color: var(--octofit-steel-blue);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--octofit-steel-blue);
+  --bs-btn-border-color: var(--octofit-steel-blue);
+  --bs-btn-hover-bg: var(--octofit-steel-blue);
+  --bs-btn-hover-border-color: var(--octofit-steel-blue);
+  --bs-btn-active-bg: var(--octofit-steel-blue);
+  --bs-btn-active-border-color: var(--octofit-steel-blue);
+}
+
+/* Cards */
+.octofit-card {
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.octofit-card .card-header {
+  background-color: #fff;
+}
+
+.octofit-home-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .octofit-home-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Tables */
+.octofit-table thead th {
+  background-color: var(--octofit-steel-blue);
+  color: #fff;
+  border-bottom: 0;
+}
+
+.octofit-table.table-hover > tbody > tr:hover > * {
+  --bs-table-hover-bg: var(--octofit-row-hover);
+}
