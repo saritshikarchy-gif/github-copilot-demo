@@ -17,6 +17,16 @@
       }
     },
     {
+      "name": "Launch Django Backend (Windows)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
+      "args": ["runserver", "0.0.0.0:8000"],
+      "django": true,
+      "justMyCode": true,
+      "python": "${workspaceFolder}/octofit-tracker/backend/venv/Scripts/python.exe"
+    },
+    {
       "name": "Launch React Frontend",
       "type": "node",
       "request": "launch",

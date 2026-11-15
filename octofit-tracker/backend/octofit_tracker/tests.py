@@ -1,4 +1,5 @@
 from datetime import timedelta
+from unittest import mock
 
 from django.urls import reverse
 from rest_framework import status
@@ -9,11 +10,24 @@ from .models import Activity, Leaderboard, Team, User, Workout
 
 class ApiRootTests(APITestCase):
     def test_api_root_lists_all_endpoints(self):
-        response = self.client.get(reverse('api-root'))
+        response = self.client.get('/')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         for name in ('users', 'teams', 'activities', 'leaderboard', 'workouts'):
             self.assertIn(f'api/{name}/', response.data[name])
+
+    def test_api_root_uses_codespace_url_when_set(self):
+        with mock.patch.dict('os.environ', {'CODESPACE_NAME': 'demo-space'}):
+            response = self.client.get('/')
+
+        self.assertEqual(
+            response.data['users'],
+            'https://demo-space-8000.app.github.dev/api/users/?format=api',
+        )
+
+    def test_api_root_allows_codespace_host(self):
+        response = self.client.get('/', HTTP_HOST='demo-space-8000.app.github.dev')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 class CollectionApiTests(APITestCase):
@@ -71,7 +85,7 @@ class CollectionApiTests(APITestCase):
 
 class CorsTests(APITestCase):
     def test_cors_headers_allow_any_origin(self):
-        response = self.client.get(reverse('api-root'), HTTP_ORIGIN='http://localhost:3000')
+        response = self.client.get('/', HTTP_ORIGIN='http://localhost:3000')
         self.assertEqual(response['Access-Control-Allow-Origin'], '*')
 
     def test_preflight_allows_methods_and_headers(self):

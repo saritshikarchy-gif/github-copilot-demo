@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Django 4 requires the https origin for POSTs (e.g. admin login) through the Codespaces proxy
+CSRF_TRUSTED_ORIGINS = ['https://*.app.github.dev', 'http://localhost:8000', 'http://127.0.0.1:8000']
+
 
 # Application definition
 
